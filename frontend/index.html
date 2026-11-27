@@ -215,8 +215,8 @@
                 <option value="ALL">전체 판정</option>
                 <option value="TP">정탐 (TP)</option>
                 <option value="FP">오탐 (FP)</option>
-                <option value="FN">미탐 (FN · API 미지원)</option>
-                <option value="TN">정미탐 (TN · API 미지원)</option>
+                <option value="FN">미탐 (FN)</option>
+                <option value="TN">정미탐 (TN)</option>
                 <option value="UNREVIEWED">미검토 (UNREVIEWED)</option>
               </select>
               <label class="inline-flex items-center gap-1.5 px-2 py-1 text-slate-300 whitespace-nowrap">
@@ -302,6 +302,8 @@
                     <option value="UNREVIEWED">미검토 (UNREVIEWED)</option>
                     <option value="TP">TP (정탐)</option>
                     <option value="FP">FP (오탐)</option>
+                    <option value="FN">FN (미탐)</option>
+                    <option value="TN">TN (정미탐)</option>
                   </select>
                 </div>
                 <div>
@@ -544,7 +546,7 @@
             <label class="inline-flex items-center gap-1 text-cyan-300"><input type="checkbox" data-rule-verdict="TN" checked class="accent-cyan-500" />정미탐</label>
             <label class="inline-flex items-center gap-1 text-slate-300"><input type="checkbox" data-rule-verdict="UNREVIEWED" checked class="accent-slate-500" />미검토</label>
           </fieldset>
-          <p class="text-[10px] text-amber-300">오탐(FP) 집계는 관제 화면의 FP 포함 설정을 따릅니다. 미탐·정미탐은 API 미지원으로 데이터가 없습니다.</p>
+          <p class="text-[10px] text-amber-300">오탐(FP) 집계는 관제 화면의 FP 포함 설정을 따릅니다.</p>
           <div class="relative h-64">
             <canvas id="ruleVerdictChart"></canvas>
             <p id="ruleVerdictEmptyState" class="hidden pointer-events-none absolute inset-0 m-auto h-fit w-fit max-w-[85%] rounded-lg border border-slate-700/80 bg-slate-900/90 px-4 py-2 text-center text-xs text-slate-300 shadow-lg"></p>
@@ -3063,8 +3065,8 @@
       const verdictDatasets = [
         { verdict: "TP", label: "정탐 (TP)", backgroundColor: "#f43f5e" },
         { verdict: "FP", label: "오탐 (FP)", backgroundColor: "#10b981" },
-        { verdict: "FN", label: "미탐 (FN · API 미지원)", backgroundColor: "#f59e0b" },
-        { verdict: "TN", label: "정미탐 (TN · API 미지원)", backgroundColor: "#06b6d4" },
+        { verdict: "FN", label: "미탐 (FN)", backgroundColor: "#f59e0b" },
+        { verdict: "TN", label: "정미탐 (TN)", backgroundColor: "#06b6d4" },
         { verdict: "UNREVIEWED", label: "미검토", backgroundColor: "#64748b" }
       ];
       const datasets = verdictDatasets
